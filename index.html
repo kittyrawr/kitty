@@ -1,25 +1,51 @@
+<!-- you're welcome for the site fixes - luke -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>coms</title>
+    <script src="https://iloveto.se/assets/js/storm.js"></script>
     <style>
-        body {
+               body {
             margin: 0;
             background-color: black;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: rgb(65, 63, 63);
+            color: white;
             font-size: 1rem;
-            font-family: Gill Sans, Gill Sans Bold;
-            font-weight: bolder;
-             /* Change font to Arial /
-            font-weight: bold; / Make the text bolder /
-    font-size: 1.5rem; / Make the text smaller */
+            font-family: 'Gill Sans', sans-serif;
+            font-weight: bold;
             text-shadow: 0 0 10px rgb(90, 85, 85);
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .overlay h1 {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .overlay h1:hover {
+            opacity: 0.7;
         }
 
         #anime-girl {
@@ -64,15 +90,43 @@
         #telegram:hover {
             color: gray;
         }
+        #socials span {
+            margin-right: 10px;
+            color: rgb(61, 60, 60);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        #socials span:hover {
+            color: gray;
+        }
+
+        body {
+            cursor: url('cursor.cur'), auto;
+        }
+
+        * {
+            cursor: url('cursor.cur'), auto !important;
+        }
     </style>
 </head>
 <body>
+
+    <div class="overlay" id="overlay">
+        <h1>Click to Enter</h1>
+    </div>
     
     <script>
-        document.body.addEventListener('click', function() {
-            // replace 'music.mp3' with the path to ur music
-            var audio = new Audio('"C:\Users\jxz\Desktop\FREE Luci4 x Axxturel x Wwu Type Beat.mp3"');
+        var overlay = document.getElementById('overlay');
+        var audio = new Audio('http://0x.lv/host/comsecs/music.mp3');
+        
+        overlay.addEventListener('click', function() {
             audio.play();
+            overlay.style.transition = 'opacity 0.5s';
+            overlay.style.opacity = '0';
+            setTimeout(function(){
+                overlay.style.display = 'none';
+            }, 500);
         });
     </script>
 
